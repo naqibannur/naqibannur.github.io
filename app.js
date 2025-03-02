@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const juzukSelect = document.getElementById('juzuk-select');
+    const surahSelect = document.getElementById('surah-select');
     const audioPlayer = document.getElementById('audio-player');
     const playBtn = document.getElementById('play-btn');
     const prevBtn = document.getElementById('prev-btn');
@@ -14,17 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const durationDisplay = document.getElementById('duration');
     
     // Variables
-    let currentJuzukIndex = -1;
+    let currentSurahIndex = -1;
     let isPlaying = false;
     
     // Initialize the player
     function initPlayer() {
-        // Populate juzuk dropdown
-        quranData.juzuks.forEach(juzuk => {
+        // Populate surah dropdown
+        quranData.surahs.forEach(surah => {
             const option = document.createElement('option');
-            option.value = juzuk.id;
-            option.textContent = juzuk.name;
-            juzukSelect.appendChild(option);
+            option.value = surah.id;
+            option.textContent = surah.name;
+            surahSelect.appendChild(option);
         });
         
         // Set initial volume
@@ -70,18 +70,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Load and play a juzuk
-    function loadJuzuk(juzukId) {
-        const juzuk = quranData.juzuks.find(j => j.id === parseInt(juzukId));
-        if (juzuk) {
-            currentJuzukIndex = quranData.juzuks.indexOf(juzuk);
-            audioPlayer.src = juzuk.url;
-            trackName.textContent = juzuk.name;
+    // Load and play a surah
+    function loadSurah(surahId) {
+        const surah = quranData.surahs.find(s => s.id === parseInt(surahId));
+        if (surah) {
+            currentSurahIndex = quranData.surahs.indexOf(surah);
+            audioPlayer.src = surah.url;
+            trackName.textContent = surah.name;
             playBtn.disabled = false;
-            prevBtn.disabled = currentJuzukIndex === 0;
-            nextBtn.disabled = currentJuzukIndex === quranData.juzuks.length - 1;
+            prevBtn.disabled = currentSurahIndex === 0;
+            nextBtn.disabled = currentSurahIndex === quranData.surahs.length - 1;
             
-            // Play automatically when a new juzuk is loaded
+            // Play automatically when a new surah is loaded
             playAudio();
         }
     }
@@ -109,71 +109,50 @@ document.addEventListener('DOMContentLoaded', () => {
         playBtn.innerHTML = '<i class="fas fa-play"></i>';
     }
     
-    // Play previous juzuk
+    // Play previous track
     function playPrevious() {
-        if (currentJuzukIndex > 0) {
-            loadJuzuk(quranData.juzuks[currentJuzukIndex - 1].id);
+        if (currentSurahIndex > 0) {
+            loadSurah(quranData.surahs[currentSurahIndex - 1].id);
         }
     }
     
-    // Play next juzuk
+    // Play next track
     function playNext() {
-        if (currentJuzukIndex < quranData.juzuks.length - 1) {
-            loadJuzuk(quranData.juzuks[currentJuzukIndex + 1].id);
+        if (currentSurahIndex < quranData.surahs.length - 1) {
+            loadSurah(quranData.surahs[currentSurahIndex + 1].id);
         }
     }
     
-    // Toggle mute
-    function toggleMute() {
-        if (audioPlayer.volume === 0) {
-            audioPlayer.volume = volumeSlider.value;
-        } else {
-            audioPlayer.volume = 0;
-        }
-        updateVolumeIcon();
-    }
-    
-    // Event Listeners
-    juzukSelect.addEventListener('change', () => {
-        if (juzukSelect.value) {
-            loadJuzuk(juzukSelect.value);
-        } else {
-            pauseAudio();
-            audioPlayer.src = '';
-            trackName.textContent = 'Select a Juzuk to play';
-            playBtn.disabled = true;
-            prevBtn.disabled = true;
-            nextBtn.disabled = true;
+    // Event listeners
+    surahSelect.addEventListener('change', (e) => {
+        if (e.target.value) {
+            loadSurah(e.target.value);
         }
     });
     
     playBtn.addEventListener('click', togglePlay);
     prevBtn.addEventListener('click', playPrevious);
     nextBtn.addEventListener('click', playNext);
-    volumeBtn.addEventListener('click', toggleMute);
-    
-    volumeSlider.addEventListener('input', () => {
-        audioPlayer.volume = volumeSlider.value;
-        updateVolumeIcon();
-    });
-    
-    progressContainer.addEventListener('click', setProgress);
     
     audioPlayer.addEventListener('timeupdate', updateProgress);
-    
     audioPlayer.addEventListener('loadedmetadata', () => {
         durationDisplay.textContent = formatTime(audioPlayer.duration);
     });
     
-    audioPlayer.addEventListener('ended', () => {
-        pauseAudio();
-        audioPlayer.currentTime = 0;
-        progressBar.style.width = '0%';
-        
-        // Auto-play next juzuk if available
-        if (currentJuzukIndex < quranData.juzuks.length - 1) {
-            playNext();
+    progressContainer.addEventListener('click', setProgress);
+    
+    volumeSlider.addEventListener('input', (e) => {
+        audioPlayer.volume = e.target.value;
+        updateVolumeIcon();
+    });
+    
+    volumeBtn.addEventListener('click', () => {
+        if (audioPlayer.volume === 0) {
+            audioPlayer.volume = volumeSlider.value;
+        } else {
+            audioPlayer.volume = 0;
         }
+        updateVolumeIcon();
     });
     
     // Initialize the player
