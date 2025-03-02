@@ -21,6 +21,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: center;
+    align-items: center;
 }
 
 header {
@@ -43,22 +44,23 @@ header h1 {
 
 .player-container {
     background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     padding: 25px;
     margin: 0 auto 30px;
-    flex-grow: 1;
+    flex-grow: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 100%;
+    max-width: 600px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
 }
 
 .player-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 .surah-selector {
@@ -312,6 +314,7 @@ footer a:hover {
     .player-container {
         padding: 20px 15px;
         margin: 0 auto 20px;
+        max-width: 90%;
     }
     
     .controls {
@@ -346,6 +349,8 @@ footer a:hover {
     
     .player-container {
         padding: 15px 12px;
+        max-width: 95%;
+        border-radius: 8px;
     }
     
     .controls {
