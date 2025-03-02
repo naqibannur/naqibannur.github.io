@@ -54,18 +54,18 @@ header h1 {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.juzuk-selector {
+.surah-selector {
     margin-bottom: 25px;
 }
 
-.juzuk-selector label {
+.surah-selector label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
     color: #2c3e50;
 }
 
-.juzuk-selector select {
+.surah-selector select {
     width: 100%;
     padding: 12px;
     border: 2px solid #ddd;
@@ -76,12 +76,12 @@ header h1 {
     transition: all 0.3s ease;
 }
 
-.juzuk-selector select:hover {
+.surah-selector select:hover {
     border-color: #3498db;
     background-color: #fff;
 }
 
-.juzuk-selector select:focus {
+.surah-selector select:focus {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
