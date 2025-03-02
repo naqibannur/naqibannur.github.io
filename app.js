@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const playBtn = document.getElementById('play-btn');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const loopBtn = document.getElementById('loop-btn');
     const volumeBtn = document.getElementById('volume-btn');
     const volumeSlider = document.getElementById('volume');
     const trackName = document.getElementById('track-name');
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Variables
     let currentSurahIndex = -1;
     let isPlaying = false;
+    let isLooping = false;
     
     // Initialize the player
     function initPlayer() {
@@ -133,6 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
     playBtn.addEventListener('click', togglePlay);
     prevBtn.addEventListener('click', playPrevious);
     nextBtn.addEventListener('click', playNext);
+    
+    loopBtn.addEventListener('click', () => {
+        isLooping = !isLooping;
+        audioPlayer.loop = isLooping;
+        loopBtn.classList.toggle('active');
+        const loopIcon = loopBtn.querySelector('i');
+        loopIcon.style.color = isLooping ? '#3498db' : '#2c3e50';
+    });
     
     audioPlayer.addEventListener('timeupdate', updateProgress);
     audioPlayer.addEventListener('loadedmetadata', () => {
