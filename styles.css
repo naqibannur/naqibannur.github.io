@@ -6,9 +6,10 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
     color: #333;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 .container {
@@ -23,21 +24,34 @@ body {
 header {
     text-align: center;
     margin-bottom: 30px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 header h1 {
     color: #2c3e50;
     font-size: 2.5rem;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .player-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 25px;
     margin-bottom: 30px;
     flex-grow: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .juzuk-selector {
@@ -53,12 +67,24 @@ header h1 {
 
 .juzuk-selector select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     font-size: 1rem;
     background-color: #f9f9f9;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.juzuk-selector select:hover {
+    border-color: #3498db;
+    background-color: #fff;
+}
+
+.juzuk-selector select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
 .player-controls {
@@ -69,7 +95,10 @@ header h1 {
 
 .track-info {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(52, 152, 219, 0.05);
 }
 
 #track-name {
@@ -85,16 +114,21 @@ header h1 {
 }
 
 .progress-bar {
-    height: 6px;
+    height: 8px;
     background-color: #e0e0e0;
-    border-radius: 3px;
+    border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
+    transition: height 0.2s ease;
+}
+
+.progress-bar:hover {
+    height: 10px;
 }
 
 .progress {
     height: 100%;
-    background-color: #3498db;
+    background: linear-gradient(90deg, #3498db, #2980b9);
     width: 0;
     transition: width 0.1s linear;
 }
@@ -110,48 +144,78 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .control-btn {
     background: none;
-    border: none;
+    border: 2px solid transparent;
     font-size: 1.5rem;
     color: #2c3e50;
     cursor: pointer;
-    transition: all 0.2s;
-    width: 40px;
-    height: 40px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.control-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.control-btn:hover::after {
+    transform: scale(1);
 }
 
 .control-btn:hover {
     color: #3498db;
-    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
 }
 
 .control-btn:disabled {
     color: #ccc;
     cursor: not-allowed;
+    transform: none;
 }
 
 #play-btn {
     font-size: 1.8rem;
-    width: 50px;
-    height: 50px;
-    background-color: #3498db;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
     color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
 #play-btn:hover {
-    background-color: #2980b9;
+    background: linear-gradient(135deg, #2980b9, #2472a4);
+    transform: scale(1.05);
+}
+
+#play-btn:active {
+    transform: scale(0.95);
 }
 
 #play-btn:disabled {
-    background-color: #ccc;
+    background: #ccc;
+    box-shadow: none;
 }
 
 .volume-container {
@@ -162,25 +226,49 @@ header h1 {
 
 .volume-slider {
     position: absolute;
-    bottom: 50px;
+    bottom: 60px;
     left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 5px 10px;
-    display: none;
+    transform: translateX(-50%) scale(0.95);
+    width: 120px;
+    height: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 8px 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
 .volume-container:hover .volume-slider {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
 }
 
 #volume {
     width: 100%;
     cursor: pointer;
+    -webkit-appearance: none;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    outline: none;
+}
+
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #3498db;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#volume::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #2980b9;
 }
 
 footer {
@@ -194,9 +282,11 @@ footer {
 footer a {
     color: #3498db;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 footer a:hover {
+    color: #2980b9;
     text-decoration: underline;
 }
 
@@ -220,13 +310,13 @@ footer a:hover {
     
     .control-btn {
         font-size: 1.2rem;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
     }
     
     #play-btn {
         font-size: 1.5rem;
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
     }
 }
