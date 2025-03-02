@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize view counter
+    let viewCount = localStorage.getItem('alquranPlayerViews') || 0;
+    viewCount = parseInt(viewCount) + 1;
+    localStorage.setItem('alquranPlayerViews', viewCount);
+    
+    // Update view count in footer
+    const viewCountDisplay = document.createElement('span');
+    viewCountDisplay.textContent = `Views: ${viewCount} | `;
+    document.querySelector('footer p').prepend(viewCountDisplay);
     // DOM Elements
     const surahSelect = document.getElementById('surah-select');
     const audioPlayer = document.getElementById('audio-player');
