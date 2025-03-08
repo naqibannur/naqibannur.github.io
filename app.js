@@ -1,10 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Update date and time function
+    function updateDateTime() {
+        const now = new Date();
+        
+        // Update time
+        const timeDisplay = document.getElementById('current-time-display');
+        timeDisplay.textContent = now.toLocaleTimeString('en-US', {
+            hour12: true,
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        
+        // Update Gregorian date
+        const gregorianDisplay = document.getElementById('gregorian-date');
+        gregorianDisplay.textContent = now.toLocaleDateString('en-US', {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+        
+        // Convert to Hijri date
+        const hijriDisplay = document.getElementById('hijri-date');
+        hijriDisplay.textContent = now.toLocaleDateString('ar-SA-u-ca-islamic', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    }
+    
+    // Initialize date and time display
+    updateDateTime();
+    
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+    
+    // Track the last displayed verse index to avoid repetition
+    let lastVerseIndex = -1;
+    
     // Display motivational verse with fade effect
     async function displayMotivationalVerse() {
         const motivationTextElement = document.getElementById('motivation-text');
         if (motivationTextElement && motivationalVerses && motivationalVerses.length > 0) {
-            // Get a random verse from the array
-            const randomIndex = Math.floor(Math.random() * motivationalVerses.length);
+            // Get a random verse from the array, ensuring it's not the same as the last one
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * motivationalVerses.length);
+            } while (randomIndex === lastVerseIndex && motivationalVerses.length > 1);
+            
+            // Update the last verse index
+            lastVerseIndex = randomIndex;
             const verse = motivationalVerses[randomIndex];
             
             // Format and display the verse
