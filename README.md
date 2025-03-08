@@ -12,6 +12,7 @@ A beautiful, responsive web application for listening to Quranic recitations wit
 - **Loop Function**: Repeat Surahs for memorization practice
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Elegant UI**: Clean, modern interface with smooth animations
+- **Motivational Verses**: Dynamic display of inspirational Quranic verses at the bottom of the player
 
 ## Technologies Used
 
@@ -56,6 +57,12 @@ A beautiful, responsive web application for listening to Quranic recitations wit
 4. Adjust volume using the volume slider
 5. Toggle loop mode by clicking the repeat button
 6. Click anywhere on the progress bar to jump to a specific part of the recitation
+7. Watch inspirational Quranic verses scroll at the bottom of the player
+
+## Customization
+
+### Motivational Verses
+The motivational verses displayed at the bottom of the player can be easily customized by modifying the `motivation-data.js` file. Add, remove, or edit verses while maintaining the existing data structure.
 
 ## Credits
 
