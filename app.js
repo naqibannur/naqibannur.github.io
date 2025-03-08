@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Display motivational verse
-    function displayMotivationalVerse() {
+    // Display motivational verse with fade effect
+    async function displayMotivationalVerse() {
         const motivationTextElement = document.getElementById('motivation-text');
         if (motivationTextElement && motivationalVerses && motivationalVerses.length > 0) {
             // Get a random verse from the array
@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize motivational verse display
     displayMotivationalVerse();
     
-    // Change verse every 30 seconds (matching the CSS animation duration)
-    setInterval(displayMotivationalVerse, 30000);
+    // Change verse every 10 seconds (matching the CSS animation duration)
+    setInterval(displayMotivationalVerse, 10000);
     
     // Initialize view counter
     let viewCount = localStorage.getItem('alquranPlayerViews') || 0;
