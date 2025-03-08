@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Display motivational verse
+    function displayMotivationalVerse() {
+        const motivationTextElement = document.getElementById('motivation-text');
+        if (motivationTextElement && motivationalVerses && motivationalVerses.length > 0) {
+            // Get a random verse from the array
+            const randomIndex = Math.floor(Math.random() * motivationalVerses.length);
+            const verse = motivationalVerses[randomIndex];
+            
+            // Format and display the verse
+            motivationTextElement.innerHTML = `${verse.verse} <span style="font-weight: bold;">— ${verse.reference}</span>`;
+        }
+    }
+    
+    // Initialize motivational verse display
+    displayMotivationalVerse();
+    
+    // Change verse every 30 seconds (matching the CSS animation duration)
+    setInterval(displayMotivationalVerse, 30000);
+    
     // Initialize view counter
     let viewCount = localStorage.getItem('alquranPlayerViews') || 0;
     viewCount = parseInt(viewCount) + 1;
