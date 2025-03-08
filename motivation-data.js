@@ -99,5 +99,129 @@ const motivationalVerses = [
     {
         verse: "And it is He who created the heavens and earth in six days - and His Throne had been upon water - that He might test you as to which of you is best in deed.",
         reference: "Quran 11:7"
+    },
+    {
+        verse: "And when you have decided, then rely upon Allah. Indeed, Allah loves those who rely [upon Him].",
+        reference: "Quran 3:159"
+    },
+    {
+        verse: "And whoever fears Allah - He will make for him of his matter ease.",
+        reference: "Quran 65:4"
+    },
+    {
+        verse: "Indeed, the patient will be given their reward without account.",
+        reference: "Quran 39:10"
+    },
+    {
+        verse: "And whoever holds firmly to Allah has [indeed] been guided to a straight path.",
+        reference: "Quran 3:101"
+    },
+    {
+        verse: "And Allah wants to lighten for you [your difficulties]; and mankind was created weak.",
+        reference: "Quran 4:28"
+    },
+    {
+        verse: "And be patient, for indeed, Allah does not allow to be lost the reward of those who do good.",
+        reference: "Quran 11:115"
+    },
+    {
+        verse: "And whoever submits his face to Allah while he is a doer of good - then he has grasped the most trustworthy handhold.",
+        reference: "Quran 31:22"
+    },
+    {
+        verse: "And your Lord is the Forgiving, full of mercy.",
+        reference: "Quran 18:58"
+    },
+    {
+        verse: "And whoever obeys Allah and His Messenger has certainly achieved a great achievement.",
+        reference: "Quran 33:71"
+    },
+    {
+        verse: "And Allah is the best of providers.",
+        reference: "Quran 62:11"
+    },
+    {
+        verse: "Indeed, Allah is ever, over all things, Perfect in Ability.",
+        reference: "Quran 48:21"
+    },
+    {
+        verse: "And Allah is the best of planners.",
+        reference: "Quran 3:54"
+    },
+    {
+        verse: "And to Allah belongs whatever is in the heavens and whatever is on the earth.",
+        reference: "Quran 3:109"
+    },
+    {
+        verse: "And Allah is the [best] Guardian, and He is the most merciful of the merciful.",
+        reference: "Quran 12:64"
+    },
+    {
+        verse: "And Allah knows what you conceal and what you declare.",
+        reference: "Quran 16:19"
+    },
+    {
+        verse: "And Allah is Knowing and Wise.",
+        reference: "Quran 4:11"
+    },
+    {
+        verse: "And Allah is ever, over all things, a Witness.",
+        reference: "Quran 4:33"
+    },
+    {
+        verse: "And Allah is Powerful over everything.",
+        reference: "Quran 2:109"
+    },
+    {
+        verse: "And Allah is Encompassing and Knowing.",
+        reference: "Quran 2:115"
+    },
+    {
+        verse: "And Allah is the ally of the believers.",
+        reference: "Quran 3:68"
+    },
+    {
+        verse: "And Allah is Appreciative and Knowing.",
+        reference: "Quran 2:158"
+    },
+    {
+        verse: "And Allah is Gentle with His servants.",
+        reference: "Quran 42:19"
+    },
+    {
+        verse: "And Allah is Free of need and Forbearing.",
+        reference: "Quran 2:263"
+    },
+    {
+        verse: "And Allah is ever Hearing and Seeing.",
+        reference: "Quran 4:134"
+    },
+    {
+        verse: "And Allah is Knowing of what you do.",
+        reference: "Quran 2:234"
+    },
+    {
+        verse: "And Allah is Forgiving and Merciful.",
+        reference: "Quran 2:173"
+    },
+    {
+        verse: "And Allah is sufficient as Disposer of affairs.",
+        reference: "Quran 4:81"
+    },
+    {
+        verse: "And Allah is sufficient as a witness.",
+        reference: "Quran 4:79"
+    },
+    {
+        verse: "Indeed, Allah loves those who act justly.",
+        reference: "Quran 60:8"
+    },
+    {
+        verse: "And Allah loves the steadfast.",
+        reference: "Quran 3:146"
+    },
+    {
+        verse: "And Allah loves those who purify themselves.",
+        reference: "Quran 9:108"
     }
 ];
