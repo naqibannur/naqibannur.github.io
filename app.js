@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     async function displayMotivationalVerse() {
         const motivationTextElement = document.getElementById('motivation-text');
         if (motivationTextElement && motivationalVerses && motivationalVerses.length > 0) {
+            // Remove the previous animation and add it again after a short delay
+            motivationTextElement.style.animation = 'none';
+            
             // Get a random verse from the array, ensuring it's not the same as the last one
             let randomIndex;
             do {
@@ -54,8 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
             lastVerseIndex = randomIndex;
             const verse = motivationalVerses[randomIndex];
             
-            // Format and display the verse
-            motivationTextElement.innerHTML = `${verse.verse} <span style="font-weight: bold;">— ${verse.reference}</span>`;
+            // Wait for the current verse to fade out completely before changing content
+            setTimeout(() => {
+                // Format and display the verse
+                motivationTextElement.innerHTML = `${verse.verse} <span style="font-weight: bold;">— ${verse.reference}</span>`;
+                
+                // Restart the animation
+                setTimeout(() => {
+                    motivationTextElement.style.animation = 'fadeInOut 10s ease-in-out';
+                }, 50);
+            }, 100);
         }
     }
     
